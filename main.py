@@ -32,6 +32,8 @@ def main() -> None:
         )
     if not LINE.strip():
         raise ValueError("entry must not be only white space")
+    if "\n" in LINE or "\r" in LINE:
+        raise ValueError("entry must be a single line")
 
     out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
     os.makedirs(out_dir, exist_ok=True)
